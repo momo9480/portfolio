@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio – Mohamed GUETARI</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+body { padding-top: 0; }
+#hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #1e4d7a 100%);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 6rem 2rem 4rem;
+  position: relative; overflow: hidden;
+}
+#hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(45,125,210,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(201,168,76,0.1) 0%, transparent 40%);
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: linear-gradient(var(--gray-300) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--gray-300) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.hero-content { position: relative; z-index: 1; max-width: 720px; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.4rem 1.2rem; border-radius: 50px; margin-bottom: 1.8rem;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: white; line-height: 1.05; margin-bottom: 0.5rem;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+.hero-name em { color: var(--accent-light); font-style: italic; }
+.hero-title {
+  font-size: 1.05rem; color: rgba(255,255,255,0.6);
+  font-weight: 300; margin-bottom: 2.5rem;
+  animation: fadeUp 0.6s 0.2s ease both;
+  letter-spacing: 0.04em;
+}
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 0.6rem;
+  justify-content: center; margin-bottom: 3rem;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+.tag {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85); font-size: 0.82rem;
+  padding: 0.35rem 0.9rem; border-radius: 50px;
+}
+.hero-cta {
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+.btn {
+  display: inline-block; padding: 0.75rem 2rem;
+  border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+  text-decoration: none; transition: all 0.25s;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(45,125,210,0.4); }
+.btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.35); color: white; }
+.btn-outline:hover { border-color: white; transform: translateY(-2px); }
+
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  animation: fadeUp 0.6s 0.9s ease both;
+}
+.hero-scroll span { color: rgba(255,255,255,0.35); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+/* NAV inside hero page */
+nav { background: transparent; border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: none; }
+nav.scrolled { background: rgba(255,255,255,0.95); border-bottom-color: var(--gray-100); box-shadow: var(--shadow-sm); }
+nav.scrolled .nav-logo { color: var(--navy); }
+nav.scrolled .nav-links a { color: var(--gray-700); }
+.nav-logo-hero { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: white; text-decoration: none; }
+.nav-logo-hero span { color: var(--accent-light); }
+.nav-links-hero a { color: rgba(255,255,255,0.8); }
+.nav-links-hero a:hover { color: white; background: rgba(255,255,255,0.1); }
+
+/* CARDS GRID */
+.pages-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem; max-width: 1100px; margin: 4rem auto; padding: 0 2rem;
+}
+.page-card {
+  background: white; border-radius: var(--radius-lg);
+  padding: 2rem; text-decoration: none; color: var(--text);
+  border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm);
+  transition: all 0.25s; display: flex; flex-direction: column; gap: 0.75rem;
+  animation: fadeUp 0.5s ease both;
+}
+.page-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--accent-light); }
+.page-card-icon { font-size: 2.2rem; }
+.page-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--navy); }
+.page-card p { font-size: 0.88rem; color: var(--gray-500); flex: 1; }
+.page-card-arrow { font-size: 1.2rem; color: var(--accent); align-self: flex-end; transition: transform 0.2s; }
+.page-card:hover .page-card-arrow { transform: translateX(4px); }
+</style>
+</head>
+<body>
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo-hero">Mohamed <span>G.</span></a>
+  <ul class="nav-links nav-links-hero">
+    <li><a href="profil.html">Profil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="parcours.html">Parcours</a></li>
+    <li><a href="veille.html">Veille</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">BTS SIO · Option SISR · 2ème année</div>
+    <h1 class="hero-name">Mohamed<br><em>Guetari</em></h1>
+    <p class="hero-title">Technicien Systèmes & Réseaux · Lycée Polyvalent de Cachan</p>
+    <div class="hero-tags">
+      <span class="tag">🌐 Réseaux</span>
+      <span class="tag">🖥️ Systèmes</span>
+      <span class="tag">🔒 Sécurité</span>
+      <span class="tag">⚙️ Active Directory</span>
+      <span class="tag">🔧 Support Technique</span>
+    </div>
+    <div class="hero-cta">
+      <a href="parcours.html" class="btn btn-primary">Voir mon parcours</a>
+      <a href="veille.html" class="btn btn-outline">Veille technologique</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Découvrir</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="pages-grid">
+  <a href="profil.html" class="page-card" style="animation-delay:0.1s">
+    <div class="page-card-icon">👤</div>
+    <h3>Profil</h3>
+    <p>Mes informations personnelles, langues, atouts et formation.</p>
+    <div class="page-card-arrow">→</div>
+  </a>
+  <a href="competences.html" class="page-card" style="animation-delay:0.2s">
+    <div class="page-card-icon">⚙️</div>
+    <h3>Compétences</h3>
+    <p>Réseaux, systèmes, sécurité, support et outils maîtrisés.</p>
+    <div class="page-card-arrow">→</div>
+  </a>
+  <a href="parcours.html" class="page-card" style="animation-delay:0.3s">
+    <div class="page-card-icon">📋</div>
+    <h3>Parcours</h3>
+    <p>Mes stages et formations du lycée jusqu'au BTS SIO SISR.</p>
+    <div class="page-card-arrow">→</div>
+  </a>
+  <a href="veille.html" class="page-card" style="animation-delay:0.4s">
+    <div class="page-card-icon">📡</div>
+    <h3>Veille Technologique</h3>
+    <p>Suivi des tendances : cybersécurité, cloud, réseaux, IA.</p>
+    <div class="page-card-arrow">→</div>
+  </a>
+</div>
+
+<footer>
+  <p><strong>Mohamed GUETARI</strong> — BTS SIO · Option SISR</p>
+  <p style="margin-top:0.4rem">📧 mohamedguetari65@gmail.com · 📱 06 95 92 72 85</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
+  });
+</script>
+</body>
+</html>

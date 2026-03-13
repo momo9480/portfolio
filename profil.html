@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil – Mohamed GUETARI</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+.info-card {
+  background: white; border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-100); overflow: hidden; box-shadow: var(--shadow-sm);
+}
+.info-card-top {
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  padding: 2rem; text-align: center;
+}
+.avatar {
+  width: 90px; height: 90px; border-radius: 50%;
+  background: var(--accent); margin: 0 auto 1rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; border: 4px solid rgba(255,255,255,0.2);
+}
+.info-card-top h2 { font-family: 'DM Serif Display', serif; color: white; font-size: 1.4rem; }
+.info-card-top p { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem; }
+.info-card-body { padding: 1.5rem; }
+.info-row {
+  display: flex; align-items: center; gap: 0.85rem;
+  padding: 0.85rem 0; border-bottom: 1px solid var(--gray-100);
+}
+.info-row:last-child { border-bottom: none; }
+.info-icon { font-size: 1.1rem; width: 30px; text-align: center; }
+.info-label { font-size: 0.75rem; color: var(--gray-500); display: block; }
+.info-value { font-size: 0.92rem; font-weight: 500; color: var(--navy); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.chip {
+  padding: 0.3rem 0.9rem; background: var(--gray-100);
+  border-radius: 50px; font-size: 0.82rem; font-weight: 500; color: var(--gray-700);
+}
+.chip-accent { background: #e3f0fb; color: var(--accent); }
+.chip-gold { background: #fef3e2; color: #c9820a; }
+
+.about-right {}
+.about-block { margin-bottom: 2rem; }
+.about-block h3 {
+  font-family: 'DM Serif Display', serif; font-size: 1.2rem;
+  color: var(--navy); margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.about-block p { color: var(--gray-700); line-height: 1.8; font-size: 0.95rem; }
+
+.formation-item {
+  background: white; border-radius: var(--radius); padding: 1.25rem 1.5rem;
+  border: 1px solid var(--gray-100); margin-bottom: 1rem; box-shadow: var(--shadow-sm);
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.formation-icon { font-size: 1.5rem; margin-top: 0.1rem; }
+.formation-title { font-weight: 700; color: var(--navy); font-size: 0.95rem; }
+.formation-sub { color: var(--gray-500); font-size: 0.82rem; margin-top: 0.2rem; }
+.formation-badge {
+  display: inline-block; margin-top: 0.4rem;
+  font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.6rem;
+  border-radius: 50px; background: #e8f5e9; color: #2e7d32;
+}
+
+@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Mohamed <span>G.</span></a>
+  <ul class="nav-links">
+    <li><a href="profil.html" class="active">Profil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="parcours.html">Parcours</a></li>
+    <li><a href="veille.html">Veille</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-badge">Qui suis-je ?</div>
+  <h1>Mon Profil</h1>
+  <p>Étudiant BTS SIO SISR · Cachan, Île-de-France</p>
+</div>
+
+<div class="content">
+  <div class="about-grid">
+
+    <!-- LEFT: carte identité -->
+    <div class="fade">
+      <div class="info-card">
+        <div class="info-card-top">
+          <div class="avatar">👤</div>
+          <h2>Mohamed GUETARI</h2>
+          <p>BTS SIO · Option SISR · 2ème année</p>
+        </div>
+        <div class="info-card-body">
+          <div class="info-row">
+            <span class="info-icon">🎂</span>
+            <div><span class="info-label">Date de naissance</span><span class="info-value">10 août 2006</span></div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">📍</span>
+            <div><span class="info-label">Localisation</span><span class="info-value">Cachan, Île-de-France</span></div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">📧</span>
+            <div><span class="info-label">Email</span><span class="info-value">mohamedguetari65@gmail.com</span></div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">📱</span>
+            <div><span class="info-label">Téléphone</span><span class="info-value">06 95 92 72 85</span></div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">🚗</span>
+            <div><span class="info-label">Permis</span><span class="info-value">Permis B</span></div>
+          </div>
+          <div class="info-row" style="flex-direction:column; align-items:flex-start;">
+            <span class="info-label">🌍 Langues</span>
+            <div class="chips" style="margin-top:0.5rem">
+              <span class="chip">🇫🇷 Français</span>
+              <span class="chip">🇬🇧 Anglais</span>
+              <span class="chip">🇪🇸 Espagnol</span>
+            </div>
+          </div>
+          <div class="info-row" style="flex-direction:column; align-items:flex-start;">
+            <span class="info-label">💡 Atouts</span>
+            <div class="chips" style="margin-top:0.5rem">
+              <span class="chip chip-accent">Attentif</span>
+              <span class="chip chip-accent">Autonome</span>
+              <span class="chip chip-accent">Adaptable</span>
+            </div>
+          </div>
+          <div class="info-row" style="flex-direction:column; align-items:flex-start;">
+            <span class="info-label">🎯 Centres d'intérêt</span>
+            <div class="chips" style="margin-top:0.5rem">
+              <span class="chip chip-gold">🏀 Basket-Ball</span>
+              <span class="chip chip-gold">✈️ Voyage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="fade" style="animation-delay:0.15s">
+
+      <div class="about-block">
+        <h3>📝 Présentation</h3>
+        <p>Étudiant en <strong>BTS Services Informatiques aux Organisations, option SISR</strong> (Solutions d'Infrastructure, Systèmes et Réseaux) au Lycée Polyvalent de Cachan, je me passionne pour la gestion des infrastructures informatiques, les réseaux et la sécurité des systèmes.</p>
+        <p style="margin-top:1rem">Mon parcours m'a permis d'acquérir une solide expérience terrain grâce à plusieurs stages en entreprise, notamment à la <strong>Mairie de Vitry-sur-Seine</strong> et chez <strong>Repair-Center</strong>, où j'ai développé des compétences concrètes en administration système, support utilisateurs et maintenance réseau.</p>
+        <p style="margin-top:1rem">Attentif, autonome et doté d'une bonne capacité d'adaptation, je cherche à mettre en pratique et approfondir mes compétences dans le domaine des infrastructures IT.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>🎓 Formations</h3>
+
+        <div class="formation-item">
+          <div class="formation-icon">🎓</div>
+          <div>
+            <div class="formation-title">BTS SIO – Option SISR</div>
+            <div class="formation-sub">Lycée Polyvalent de Cachan · Depuis sept. 2024 · <strong>2ème année en cours</strong></div>
+            <span class="formation-badge">En cours</span>
+          </div>
+        </div>
+
+        <div class="formation-item">
+          <div class="formation-icon">📜</div>
+          <div>
+            <div class="formation-title">Bac Pro Systèmes Numériques – Option C – Section Euro</div>
+            <div class="formation-sub">Lycée Polyvalent de Cachan · Sept. 2021 → Juin 2024</div>
+            <span class="formation-badge" style="background:#fef3e2;color:#d4830a">Mention Très Bien</span>
+          </div>
+        </div>
+
+        <div class="formation-item">
+          <div class="formation-icon">🩺</div>
+          <div>
+            <div class="formation-title">Sauveteur Secouriste du Travail (SST)</div>
+            <div class="formation-sub">Lycée de Cachan · 2024</div>
+            <span class="formation-badge">Certifié</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p><strong>Mohamed GUETARI</strong> — BTS SIO · Option SISR</p>
+  <p style="margin-top:0.4rem">📧 mohamedguetari65@gmail.com · 📱 06 95 92 72 85</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parcours – Mohamed GUETARI</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.timeline { position: relative; padding-left: 56px; }
+.timeline::before {
+  content: ''; position: absolute; left: 22px; top: 8px; bottom: 0;
+  width: 2px; background: linear-gradient(to bottom, var(--accent), var(--gray-300));
+}
+.timeline-item { position: relative; margin-bottom: 2.5rem; }
+.timeline-dot {
+  position: absolute; left: -44px; top: 12px;
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; border: 3px solid white; box-shadow: var(--shadow-sm); z-index: 1;
+}
+.stage-card {
+  background: white; border-radius: var(--radius); padding: 1.75rem;
+  border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.stage-card:hover { box-shadow: var(--shadow-md); transform: translateX(4px); }
+.stage-head { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.3rem; }
+.stage-title { font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+.stage-badge {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 0.2rem 0.7rem; border-radius: 50px;
+}
+.b-bts2  { background:#e8f5e9; color:#2e7d32; }
+.b-bts1  { background:#e3f0fb; color:#1a6ab3; }
+.b-pre   { background:#fef3e2; color:#d4830a; }
+.b-form  { background:#ede7f6; color:#6a1b9a; }
+.stage-company { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.15rem; }
+.stage-period { color: var(--gray-500); font-size: 0.82rem; margin-bottom: 0.9rem; }
+.stage-desc { color: var(--gray-700); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1rem; }
+.tasks { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.task {
+  display: flex; align-items: center; gap: 0.4rem;
+  background: var(--gray-100); border-radius: 5px; padding: 0.25rem 0.65rem;
+  font-size: 0.8rem; color: var(--gray-700);
+}
+.task::before { content: '→'; color: var(--accent); font-weight: 700; font-size: 0.75rem; }
+
+/* filtre */
+.filter-bar { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.filter-btn {
+  padding: 0.4rem 1.1rem; border-radius: 50px; border: 1.5px solid var(--gray-300);
+  background: white; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  transition: all 0.2s; color: var(--gray-700);
+}
+.filter-btn:hover, .filter-btn.active { border-color: var(--accent); background: var(--accent); color: white; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Mohamed <span>G.</span></a>
+  <ul class="nav-links">
+    <li><a href="profil.html">Profil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="parcours.html" class="active">Parcours</a></li>
+    <li><a href="veille.html">Veille</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-badge">Formations & Stages</div>
+  <h1>Mon Parcours</h1>
+  <p>Du lycée jusqu'au BTS SIO SISR 2ème année</p>
+</div>
+
+<div class="content">
+
+  <div class="section-label">Chronologie</div>
+  <h2 class="section-title">Expériences professionnelles & formations</h2>
+  <p class="section-sub">4 stages et 2 diplômes jalonnent mon parcours dans les systèmes et réseaux.</p>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filter('all', this)">Tout afficher</button>
+    <button class="filter-btn" onclick="filter('stage', this)">Stages uniquement</button>
+    <button class="filter-btn" onclick="filter('formation', this)">Formations uniquement</button>
+  </div>
+
+  <div class="timeline" id="timeline">
+
+    <!-- BTS 2 -->
+    <div class="timeline-item fade" data-type="stage" style="animation-delay:0.05s">
+      <div class="timeline-dot" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">🏛️</div>
+      <div class="stage-card">
+        <div class="stage-head">
+          <div class="stage-title">Technicien Systèmes, Réseaux & Télécommunications</div>
+          <span class="stage-badge b-bts2">BTS SIO · 2ème année</span>
+        </div>
+        <div class="stage-company">🏛️ Mairie de Vitry-sur-Seine (94400)</div>
+        <div class="stage-period">📅 12 janvier 2026 → 20 février 2026 · 6 semaines</div>
+        <p class="stage-desc">Stage de fin de BTS au sein de la direction des systèmes d'information de la mairie. Mission polyvalente couvrant l'administration réseau, la gestion du parc informatique et le support utilisateurs au quotidien.</p>
+        <div class="tasks">
+          <span class="task">Commutation réseau</span>
+          <span class="task">Gestion Active Directory</span>
+          <span class="task">Assistance utilisateurs</span>
+          <span class="task">Gestion de parc GLPI</span>
+          <span class="task">Brassage prises Ethernet</span>
+          <span class="task">Installation PC & Tél. IP</span>
+          <span class="task">Réparation PC</span>
+          <span class="task">Gestion de stock</span>
+          <span class="task">Recensement matériels</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BTS 1 -->
+    <div class="timeline-item fade" data-type="stage" style="animation-delay:0.1s">
+      <div class="timeline-dot" style="background:linear-gradient(135deg,#e3f0fb,#bbdefb)">🔧</div>
+      <div class="stage-card">
+        <div class="stage-head">
+          <div class="stage-title">Maintenance Informatique</div>
+          <span class="stage-badge b-bts1">BTS SIO · 1ère année</span>
+        </div>
+        <div class="stage-company">🔧 Repair-Center · Paris</div>
+        <div class="stage-period">📅 Mai 2025 → Juin 2025 · 6 semaines</div>
+        <p class="stage-desc">Stage de 1ère année BTS SIO au sein d'un centre de réparation spécialisé. Prise en charge complète des demandes clients, diagnostic et réparation de matériels informatiques et mobiles.</p>
+        <div class="tasks">
+          <span class="task">Réparation de PC</span>
+          <span class="task">Réparation smartphones</span>
+          <span class="task">Diagnostic de pannes</span>
+          <span class="task">Conseils techniques</span>
+          <span class="task">Gestion des stocks</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formation BTS -->
+    <div class="timeline-item fade" data-type="formation" style="animation-delay:0.15s">
+      <div class="timeline-dot" style="background:linear-gradient(135deg,#ede7f6,#d1c4e9)">🎓</div>
+      <div class="stage-card">
+        <div class="stage-head">
+          <div class="stage-title">BTS SIO – Option SISR</div>
+          <span class="stage-badge b-form">Formation</span>
+        </div>
+        <div class="stage-company">🏫 Lycée Polyvalent de Cachan · Cachan (94)</div>
+        <div class="stage-period">📅 Depuis septembre 2024 · En cours – 2ème année</div>
+        <p class="stage-desc">BTS Services Informatiques aux Organisations, spécialité Solutions d'Infrastructure, Systèmes et Réseaux. Formation axée sur l'administration des systèmes, les réseaux, la sécurité et la supervision informatique.</p>
+      </div>
+    </div>
+
+    <!-- Pré-bac long -->
+    <div class="timeline-item fade" data-type="stage" style="animation-delay:0.2s">
+      <div class="timeline-dot" style="background:linear-gradient(135deg,#fef3e2,#ffe0b2)">🏛️</div>
+      <div class="stage-card">
+        <div class="stage-head">
+          <div class="stage-title">Technicien Maintenance Informatique, Télécommunications & Réseaux</div>
+          <span class="stage-badge b-pre">Pré-Bac · Terminale</span>
+        </div>
+        <div class="stage-company">🏛️ Mairie de Vitry-sur-Seine</div>
+        <div class="stage-period">📅 27 novembre 2023 → 2 février 2024 · 8 semaines</div>
+        <p class="stage-desc">Stage de terminale Bac Pro Systèmes Numériques. Immersion complète dans la direction des systèmes d'information d'une collectivité territoriale, avec des missions variées en réseaux, systèmes et support utilisateurs.</p>
+        <div class="tasks">
+          <span class="task">Commutation réseau</span>
+          <span class="task">Gestion Active Directory</span>
+          <span class="task">Assistance utilisateurs</span>
+          <span class="task">Gestion de parc GLPI</span>
+          <span class="task">Brassage prises Ethernet</span>
+          <span class="task">Installation PC & Tél. IP</span>
+          <span class="task">Réparation PC</span>
+          <span class="task">Gestion de stock</span>
+          <span class="task">Recensement matériels</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pré-bac court -->
+    <div class="timeline-item fade" data-type="stage" style="animation-delay:0.25s">
+      <div class="timeline-dot" style="background:linear-gradient(135deg,#fef3e2,#ffe0b2)">🏛️</div>
+      <div class="stage-card">
+        <div class="stage-head">
+          <div class="stage-title">Technicien Maintenance Informatique & Télécommunication</div>
+          <span class="stage-badge b-pre">Pré-Bac · Lycée</span>
+        </div>
+        <div class="stage-company">🏛️ Mairie de Vitry-sur-Seine</div>
+        <div class="stage-period">📅 Janvier 2023 → Avril 2023</div>
+        <p class="stage-desc">Premier stage en entreprise dans le domaine informatique. Découverte des métiers des systèmes et réseaux dans un environnement professionnel au sein de la DSI d'une collectivité territoriale.</p>
+        <div class="tasks">
+          <span class="task">Support technique utilisateurs</span>
+          <span class="task">Maintenance matérielle</span>
+          <span class="task">Découverte infrastructure réseau</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bac Pro -->
+    <div class="timeline-item fade" data-type="formation" style="animation-delay:0.3s">
+      <div class="timeline-dot" style="background:linear-gradient(135deg,#ede7f6,#d1c4e9)">📜</div>
+      <div class="stage-card">
+        <div class="stage-head">
+          <div class="stage-title">Bac Pro Systèmes Numériques – Option C – Section Euro</div>
+          <span class="stage-badge b-form">Diplôme</span>
+        </div>
+        <div class="stage-company">🏫 Lycée Polyvalent de Cachan · Cachan (94)</div>
+        <div class="stage-period">📅 Septembre 2021 → Juin 2024 · <strong>Mention Très Bien</strong></div>
+        <p class="stage-desc">Baccalauréat professionnel obtenu avec mention Très Bien. Section Euro favorisant la pratique de l'anglais technique dans le domaine des systèmes numériques.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p><strong>Mohamed GUETARI</strong> — BTS SIO · Option SISR</p>
+  <p style="margin-top:0.4rem">📧 mohamedguetari65@gmail.com · 📱 06 95 92 72 85</p>
+</footer>
+
+<script>
+function filter(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.timeline-item').forEach(item => {
+    if (type === 'all' || item.dataset.type === type) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

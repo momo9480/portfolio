@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compétences – Mohamed GUETARI</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+.skill-card {
+  background: white; border-radius: var(--radius); padding: 1.75rem;
+  border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.skill-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.skill-card-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+.skill-icon {
+  width: 50px; height: 50px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+}
+.skill-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); }
+.skill-card .skill-desc { font-size: 0.82rem; color: var(--gray-500); margin-top: 0.15rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.skill-tag {
+  background: var(--gray-100); color: var(--gray-700);
+  font-size: 0.78rem; padding: 0.28rem 0.65rem; border-radius: 5px; font-weight: 500;
+}
+
+/* Barre de niveau */
+.skill-bar { margin-top: 1rem; }
+.skill-bar-label { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--gray-500); margin-bottom: 0.35rem; }
+.skill-bar-track { height: 6px; background: var(--gray-100); border-radius: 50px; overflow: hidden; }
+.skill-bar-fill { height: 100%; border-radius: 50px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+
+/* Tableau certifications */
+.cert-section { margin-top: 1rem; }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.cert-card {
+  background: white; border-radius: var(--radius); padding: 1.25rem 1.5rem;
+  border: 1px solid var(--gray-100); display: flex; gap: 0.75rem; align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+.cert-card-icon { font-size: 1.6rem; }
+.cert-name { font-weight: 600; color: var(--navy); font-size: 0.9rem; }
+.cert-sub { font-size: 0.78rem; color: var(--gray-500); margin-top: 0.1rem; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Mohamed <span>G.</span></a>
+  <ul class="nav-links">
+    <li><a href="profil.html">Profil</a></li>
+    <li><a href="competences.html" class="active">Compétences</a></li>
+    <li><a href="parcours.html">Parcours</a></li>
+    <li><a href="veille.html">Veille</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-badge">Expertise technique</div>
+  <h1>Compétences</h1>
+  <p>Acquises en formation et consolidées lors de mes stages en entreprise</p>
+</div>
+
+<div class="content">
+
+  <div class="section-label">Domaines techniques</div>
+  <h2 class="section-title">Mes savoir-faire</h2>
+  <p class="section-sub">Compétences développées au fil de mes formations et expériences professionnelles en SISR.</p>
+
+  <div class="skills-grid">
+
+    <div class="skill-card fade" style="animation-delay:0.05s">
+      <div class="skill-card-top">
+        <div class="skill-icon" style="background:#e3f0fb">🌐</div>
+        <div><h3>Réseaux & Télécommunications</h3><div class="skill-desc">Infrastructure, commutation, protocoles</div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Commutation</span>
+        <span class="skill-tag">VLAN</span>
+        <span class="skill-tag">TCP/IP</span>
+        <span class="skill-tag">VPN</span>
+        <span class="skill-tag">Téléphonie IP</span>
+        <span class="skill-tag">Câblage Ethernet</span>
+        <span class="skill-tag">Brassage</span>
+        <span class="skill-tag">IPv4 / IPv6</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-label"><span>Niveau</span><span>Opérationnel</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card fade" style="animation-delay:0.1s">
+      <div class="skill-card-top">
+        <div class="skill-icon" style="background:#e8f5e9">🖥️</div>
+        <div><h3>Systèmes & Administration</h3><div class="skill-desc">Windows Server, Linux, AD</div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Windows Server</span>
+        <span class="skill-tag">Active Directory</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">GPO</span>
+        <span class="skill-tag">GLPI</span>
+        <span class="skill-tag">Gestion de parc</span>
+        <span class="skill-tag">Virtualisation</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-label"><span>Niveau</span><span>Confirmé</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card fade" style="animation-delay:0.15s">
+      <div class="skill-card-top">
+        <div class="skill-icon" style="background:#fef3e2">🔒</div>
+        <div><h3>Sécurité Informatique</h3><div class="skill-desc">Pare-feu, supervision, politiques</div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Pare-feu</span>
+        <span class="skill-tag">Zero Trust</span>
+        <span class="skill-tag">Politique de sécurité</span>
+        <span class="skill-tag">Supervision</span>
+        <span class="skill-tag">Sauvegarde</span>
+        <span class="skill-tag">Chiffrement</span>
+        <span class="skill-tag">RGPD</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-label"><span>Niveau</span><span>Intermédiaire</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card fade" style="animation-delay:0.2s">
+      <div class="skill-card-top">
+        <div class="skill-icon" style="background:#f3e8f9">🔧</div>
+        <div><h3>Support & Maintenance</h3><div class="skill-desc">Helpdesk, diagnostic, réparation</div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Réparation PC</span>
+        <span class="skill-tag">Diagnostic pannes</span>
+        <span class="skill-tag">Smartphones</span>
+        <span class="skill-tag">Assistance utilisateurs</span>
+        <span class="skill-tag">Gestion de stock</span>
+        <span class="skill-tag">Recensement matériels</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-label"><span>Niveau</span><span>Confirmé</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card fade" style="animation-delay:0.25s">
+      <div class="skill-card-top">
+        <div class="skill-icon" style="background:#e8f5e9">💻</div>
+        <div><h3>Développement & Scripting</h3><div class="skill-desc">Automatisation et administration</div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Scripting Bash</span>
+        <span class="skill-tag">PowerShell</span>
+        <span class="skill-tag">Suite Office</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-label"><span>Niveau</span><span>Intermédiaire</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card fade" style="animation-delay:0.3s">
+      <div class="skill-card-top">
+        <div class="skill-icon" style="background:#fce8e8">📋</div>
+        <div><h3>Gestion & Documentation</h3><div class="skill-desc">Ticketing, ITIL, schémas réseau</div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">GLPI Ticketing</span>
+        <span class="skill-tag">Documentation</span>
+        <span class="skill-tag">Schémas réseau</span>
+        <span class="skill-tag">ITIL</span>
+        <span class="skill-tag">Relation client</span>
+        <span class="skill-tag">Comptes-rendus</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-label"><span>Niveau</span><span>Opérationnel</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:72%"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Certifications / formations complémentaires -->
+  <div class="section-label">Certifications & habilitations</div>
+  <h2 class="section-title">Certifications</h2>
+  <div class="cert-grid cert-section fade">
+    <div class="cert-card">
+      <div class="cert-card-icon">🩺</div>
+      <div><div class="cert-name">SST – Sauveteur Secouriste du Travail</div><div class="cert-sub">Lycée de Cachan · 2024</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-card-icon">🏅</div>
+      <div><div class="cert-name">Bac Pro Systèmes Numériques</div><div class="cert-sub">Mention Très Bien · 2024</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-card-icon">🚗</div>
+      <div><div class="cert-name">Permis B</div><div class="cert-sub">Mobilité autonome</div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Mohamed GUETARI</strong> — BTS SIO · Option SISR</p>
+  <p style="margin-top:0.4rem">📧 mohamedguetari65@gmail.com · 📱 06 95 92 72 85</p>
+</footer>
+</body>
+</html>

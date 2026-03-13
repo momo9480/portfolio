@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --navy: #0f1e2e;
+  --blue: #1a3a5c;
+  --accent: #2d7dd2;
+  --accent-light: #5fa8e8;
+  --gold: #c9a84c;
+  --white: #ffffff;
+  --off-white: #f7f9fc;
+  --gray-100: #eef2f7;
+  --gray-300: #c8d3df;
+  --gray-500: #7a8fa6;
+  --gray-700: #3d5166;
+  --text: #1a2533;
+  --shadow-sm: 0 2px 8px rgba(15,30,46,0.08);
+  --shadow-md: 0 6px 24px rgba(15,30,46,0.12);
+  --shadow-lg: 0 16px 48px rgba(15,30,46,0.16);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--off-white);
+  color: var(--text);
+  line-height: 1.6;
+  padding-top: 64px;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-100);
+  padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+  box-shadow: var(--shadow-sm);
+}
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem; color: var(--navy); text-decoration: none;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 0.25rem; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--gray-700);
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
+  text-transform: uppercase; padding: 0.5rem 0.9rem; border-radius: 8px;
+  transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--accent); background: var(--gray-100); }
+.nav-links a.active { color: var(--accent); background: #e3f0fb; }
+
+/* PAGE HEADER */
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--gray-300) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--gray-300) 1px, transparent 1px);
+  background-size: 40px 40px; opacity: 0.04;
+}
+.page-header-badge {
+  display: inline-block;
+  background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.35rem 1.2rem; border-radius: 50px; margin-bottom: 1rem;
+}
+.page-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem); color: white; line-height: 1.1;
+  position: relative;
+}
+.page-header p { color: rgba(255,255,255,0.6); margin-top: 0.75rem; font-size: 1rem; }
+
+/* CONTENT */
+.content { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+}
+.section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--accent); }
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--navy); margin-bottom: 0.5rem;
+}
+.section-sub { color: var(--gray-500); font-size: 0.95rem; margin-bottom: 2.5rem; }
+
+/* FOOTER */
+footer {
+  background: var(--navy); color: rgba(255,255,255,0.6);
+  text-align: center; padding: 2rem;
+  font-size: 0.85rem;
+}
+footer strong { color: white; }
+
+/* CARDS */
+.card {
+  background: white; border-radius: var(--radius); padding: 1.75rem;
+  border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade { animation: fadeUp 0.5s ease both; }
+
+@media (max-width: 768px) {
+  .nav-links a span { display: none; }
+  nav { padding: 0 1rem; }
+}

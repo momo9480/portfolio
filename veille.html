@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille Technologique – Mohamed GUETARI</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.veille-intro {
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  border-radius: var(--radius-lg); padding: 2rem 2.5rem;
+  display: flex; gap: 1.5rem; align-items: flex-start;
+  margin-bottom: 3rem; color: white;
+}
+.veille-intro-icon { font-size: 2.5rem; flex-shrink: 0; }
+.veille-intro p { color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.95rem; }
+.veille-intro strong { color: white; }
+
+.veille-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+.veille-card {
+  background: white; border-radius: var(--radius); padding: 1.75rem;
+  border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.veille-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.veille-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.veille-icon {
+  width: 46px; height: 46px; border-radius: 11px;
+  display: flex; align-items: center; justify-content: center; font-size: 1.35rem; flex-shrink: 0;
+}
+.veille-card h3 { font-size: 0.98rem; font-weight: 700; color: var(--navy); }
+.veille-meta { font-size: 0.76rem; color: var(--gray-500); margin-top: 0.15rem; }
+.veille-card p { color: var(--gray-700); font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem; }
+.veille-sources { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.source-tag {
+  font-size: 0.73rem; padding: 0.2rem 0.6rem;
+  background: var(--gray-100); border-radius: 4px; color: var(--gray-500); font-weight: 500;
+}
+
+/* Méthodes */
+.methods-card {
+  background: white; border-radius: var(--radius); padding: 2rem;
+  border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm);
+}
+.methods-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 1.25rem; }
+.method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.method-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: var(--off-white); border-radius: 8px; padding: 0.75rem 1rem;
+  font-size: 0.87rem; color: var(--gray-700); border: 1px solid var(--gray-100);
+}
+.method-item span { font-size: 1.25rem; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Mohamed <span>G.</span></a>
+  <ul class="nav-links">
+    <li><a href="profil.html">Profil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="parcours.html">Parcours</a></li>
+    <li><a href="veille.html" class="active">Veille</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-badge">Tendances & Innovations</div>
+  <h1>Veille Technologique</h1>
+  <p>Suivi des évolutions dans le domaine SISR · Mise à jour régulière</p>
+</div>
+
+<div class="content">
+
+  <div class="veille-intro fade">
+    <div class="veille-intro-icon">📡</div>
+    <div>
+      <p>La veille technologique est une démarche essentielle dans le métier de technicien SISR. Elle me permet de rester informé des <strong>évolutions des infrastructures réseaux, des nouvelles menaces de sécurité</strong> et des innovations en matière de systèmes et de virtualisation. Je consulte régulièrement des sources spécialisées pour maintenir mes connaissances à jour et anticiper les changements du secteur.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Thèmes suivis</div>
+  <h2 class="section-title">Sujets de veille</h2>
+  <p class="section-sub">Six domaines clés surveillés en continu pour rester à la pointe des technologies SISR.</p>
+
+  <div class="veille-grid">
+
+    <div class="veille-card fade" style="animation-delay:0.05s">
+      <div class="veille-card-head">
+        <div class="veille-icon" style="background:#fce8e8">🔒</div>
+        <div><h3>Cybersécurité & Menaces</h3><div class="veille-meta">Surveillance continue · Priorité haute</div></div>
+      </div>
+      <p>Face à l'augmentation des cyberattaques (ransomwares, phishing, DDoS), la sécurité des infrastructures est primordiale. Les entreprises renforcent leurs politiques <strong>Zero Trust</strong> et déploient des solutions SIEM pour détecter les intrusions. La montée de l'IA dans les attaques impose une adaptation constante des défenses.</p>
+      <div class="veille-sources">
+        <span class="source-tag">ANSSI</span>
+        <span class="source-tag">CVE Details</span>
+        <span class="source-tag">Sekoia</span>
+        <span class="source-tag">Bleeping Computer</span>
+      </div>
+    </div>
+
+    <div class="veille-card fade" style="animation-delay:0.1s">
+      <div class="veille-card-head">
+        <div class="veille-icon" style="background:#e3f0fb">☁️</div>
+        <div><h3>Cloud & Virtualisation</h3><div class="veille-meta">Évolution rapide · Impact fort</div></div>
+      </div>
+      <p>Le <strong>cloud hybride</strong> s'impose comme l'architecture de référence. Des solutions comme Azure, AWS et les hyperviseurs (VMware, Proxmox) transforment la gestion des infrastructures. La conteneurisation via Docker et Kubernetes simplifie le déploiement des services en entreprise.</p>
+      <div class="veille-sources">
+        <span class="source-tag">Microsoft Azure Blog</span>
+        <span class="source-tag">Proxmox Forums</span>
+        <span class="source-tag">Le Monde Informatique</span>
+      </div>
+    </div>
+
+    <div class="veille-card fade" style="animation-delay:0.15s">
+      <div class="veille-card-head">
+        <div class="veille-icon" style="background:#e8f5e9">🌐</div>
+        <div><h3>Réseaux & SDN</h3><div class="veille-meta">Révolution en cours · SISR critique</div></div>
+      </div>
+      <p>Le <strong>Software Defined Networking (SDN)</strong> révolutionne la gestion des réseaux. Le Wi-Fi 6E et la 5G dans les architectures d'entreprise ouvrent de nouvelles possibilités. L'IPv6 devient incontournable avec l'épuisement des adresses IPv4 dans les grandes organisations.</p>
+      <div class="veille-sources">
+        <span class="source-tag">Cisco Newsroom</span>
+        <span class="source-tag">NetworkWorld</span>
+        <span class="source-tag">ZDNet</span>
+      </div>
+    </div>
+
+    <div class="veille-card fade" style="animation-delay:0.2s">
+      <div class="veille-card-head">
+        <div class="veille-icon" style="background:#f3e8f9">🤖</div>
+        <div><h3>IA & Automatisation IT</h3><div class="veille-meta">Tendance majeure · 2025</div></div>
+      </div>
+      <p>L'IA s'intègre dans les outils de supervision réseau (<strong>AIOps</strong>) pour prédire les pannes avant qu'elles surviennent. L'automatisation via Ansible et Terraform change les pratiques des admins système. Les chatbots IA transforment également le support helpdesk de niveau 1.</p>
+      <div class="veille-sources">
+        <span class="source-tag">Gartner</span>
+        <span class="source-tag">01net</span>
+        <span class="source-tag">LeMagIT</span>
+      </div>
+    </div>
+
+    <div class="veille-card fade" style="animation-delay:0.25s">
+      <div class="veille-card-head">
+        <div class="veille-icon" style="background:#e3f0fb">🖥️</div>
+        <div><h3>Windows Server & Linux</h3><div class="veille-meta">Systèmes · Compétence cœur SISR</div></div>
+      </div>
+      <p><strong>Windows Server 2025</strong> apporte des améliorations en sécurité et performance pour Active Directory. Côté Linux, Debian et Ubuntu Server dominent les infrastructures cloud. La gestion des GPO et des politiques de sécurité évolue avec les nouvelles normes de conformité.</p>
+      <div class="veille-sources">
+        <span class="source-tag">Microsoft Docs</span>
+        <span class="source-tag">Linux Foundation</span>
+        <span class="source-tag">IT-Connect</span>
+      </div>
+    </div>
+
+    <div class="veille-card fade" style="animation-delay:0.3s">
+      <div class="veille-card-head">
+        <div class="veille-icon" style="background:#fef3e2">📋</div>
+        <div><h3>RGPD & Conformité</h3><div class="veille-meta">Obligation légale · Collectivités</div></div>
+      </div>
+      <p>Pour les collectivités territoriales comme les mairies, la conformité <strong>RGPD</strong> est une obligation majeure. Les techniciens SISR doivent intégrer la protection des données dès la conception (Privacy by Design). L'ANSSI publie des recommandations spécifiques aux administrations publiques.</p>
+      <div class="veille-sources">
+        <span class="source-tag">CNIL</span>
+        <span class="source-tag">ANSSI</span>
+        <span class="source-tag">Journal du Net</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label">Méthodes</div>
+  <h2 class="section-title">Comment je fais ma veille</h2>
+  <div class="methods-card fade">
+    <div class="method-grid">
+      <div class="method-item"><span>📰</span> Newsletters IT-Connect, LeMagIT</div>
+      <div class="method-item"><span>🎥</span> YouTube : Cocadmin, Xavki</div>
+      <div class="method-item"><span>🏫</span> Cisco Netacad & ressources CEFIM</div>
+      <div class="method-item"><span>📱</span> Agrégateurs RSS & r/sysadmin</div>
+      <div class="method-item"><span>📄</span> Publications officielles ANSSI & CNIL</div>
+      <div class="method-item"><span>💬</span> Communautés Discord IT francophones</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Mohamed GUETARI</strong> — BTS SIO · Option SISR</p>
+  <p style="margin-top:0.4rem">📧 mohamedguetari65@gmail.com · 📱 06 95 92 72 85</p>
+</footer>
+</body>
+</html>
