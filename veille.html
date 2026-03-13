@@ -6,50 +6,126 @@
 <title>Veille Technologique – Mohamed GUETARI</title>
 <link rel="stylesheet" href="shared.css">
 <style>
-.veille-intro {
-  background: linear-gradient(135deg, var(--navy), var(--blue));
-  border-radius: var(--radius-lg); padding: 2rem 2.5rem;
-  display: flex; gap: 1.5rem; align-items: flex-start;
-  margin-bottom: 3rem; color: white;
-}
-.veille-intro-icon { font-size: 2.5rem; flex-shrink: 0; }
-.veille-intro p { color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.95rem; }
-.veille-intro strong { color: white; }
 
-.veille-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-.veille-card {
-  background: white; border-radius: var(--radius); padding: 1.75rem;
+/* INTRO BANNER */
+.veille-intro {
+  background: linear-gradient(135deg, var(--navy), #1a4a7a);
+  border-radius: var(--radius-lg); padding: 2.5rem;
+  display: flex; gap: 2rem; align-items: center;
+  margin-bottom: 3rem; position: relative; overflow: hidden;
+}
+.veille-intro::before {
+  content: '📶';
+  position: absolute; right: 2rem; bottom: -1rem;
+  font-size: 8rem; opacity: 0.07; pointer-events: none;
+}
+.veille-intro-icon {
+  width: 72px; height: 72px; border-radius: 18px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem; flex-shrink: 0;
+}
+.veille-intro-text h2 {
+  font-family: 'DM Serif Display', serif;
+  color: white; font-size: 1.5rem; margin-bottom: 0.5rem;
+}
+.veille-intro-text p { color: rgba(255,255,255,0.7); line-height: 1.75; font-size: 0.92rem; }
+.veille-intro-text strong { color: white; }
+.intro-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.intro-tag {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85); font-size: 0.78rem; padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+}
+
+/* DEFINITION */
+.def-card {
+  background: white; border-radius: var(--radius); padding: 2rem;
+  border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm);
+  display: grid; grid-template-columns: 1fr 1px 1fr; gap: 2rem;
+  margin-bottom: 3rem;
+}
+.def-block h4 {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+}
+.def-block p { color: var(--gray-700); font-size: 0.9rem; line-height: 1.75; }
+.def-divider { background: var(--gray-100); }
+
+/* COMPARAISON TABLEAU */
+.compare-table {
+  width: 100%; border-collapse: collapse; background: white;
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100);
+  margin-bottom: 3rem; font-size: 0.88rem;
+}
+.compare-table th {
+  background: var(--navy); color: white; padding: 1rem 1.25rem;
+  text-align: left; font-size: 0.8rem; letter-spacing: 0.05em; font-weight: 600;
+}
+.compare-table th:first-child { color: rgba(255,255,255,0.6); }
+.compare-table td { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:nth-child(even) td { background: var(--off-white); }
+.compare-table td:first-child { font-weight: 600; color: var(--navy); }
+.badge-wifi6  { background:#e3f0fb; color:#1a6ab3; padding:0.15rem 0.6rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
+.badge-wifi6e { background:#e8f5e9; color:#2e7d32; padding:0.15rem 0.6rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
+.badge-wifi5  { background:var(--gray-100); color:var(--gray-500); padding:0.15rem 0.6rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
+
+/* CARDS AVANTAGES */
+.avantages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 3rem; }
+.avantage-card {
+  background: white; border-radius: var(--radius); padding: 1.5rem;
   border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm);
   transition: transform 0.25s, box-shadow 0.25s;
 }
-.veille-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.veille-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-.veille-icon {
-  width: 46px; height: 46px; border-radius: 11px;
-  display: flex; align-items: center; justify-content: center; font-size: 1.35rem; flex-shrink: 0;
-}
-.veille-card h3 { font-size: 0.98rem; font-weight: 700; color: var(--navy); }
-.veille-meta { font-size: 0.76rem; color: var(--gray-500); margin-top: 0.15rem; }
-.veille-card p { color: var(--gray-700); font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem; }
-.veille-sources { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.source-tag {
-  font-size: 0.73rem; padding: 0.2rem 0.6rem;
-  background: var(--gray-100); border-radius: 4px; color: var(--gray-500); font-weight: 500;
-}
+.avantage-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.av-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 0.85rem; }
+.avantage-card h4 { font-weight: 700; color: var(--navy); font-size: 0.95rem; margin-bottom: 0.4rem; }
+.avantage-card p { color: var(--gray-700); font-size: 0.85rem; line-height: 1.65; }
 
-/* Méthodes */
-.methods-card {
-  background: white; border-radius: var(--radius); padding: 2rem;
-  border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm);
+/* USAGE ENTREPRISE */
+.usage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 3rem; }
+.usage-card {
+  background: white; border-radius: var(--radius); padding: 1.5rem;
+  border-left: 4px solid var(--accent); box-shadow: var(--shadow-sm);
 }
-.methods-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 1.25rem; }
-.method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-.method-item {
+.usage-card h4 { font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; font-size: 0.95rem; }
+.usage-card p { color: var(--gray-700); font-size: 0.87rem; line-height: 1.65; }
+.usage-tag { display: inline-block; margin-top: 0.75rem; font-size: 0.75rem; font-weight: 600; color: var(--accent); background: #e3f0fb; padding: 0.2rem 0.6rem; border-radius: 4px; }
+
+/* SOURCES */
+.sources-section {
+  background: white; border-radius: var(--radius); padding: 2rem;
+  border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm); margin-bottom: 3rem;
+}
+.sources-section h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 1.25rem; }
+.sources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.source-item {
   display: flex; align-items: center; gap: 0.75rem;
   background: var(--off-white); border-radius: 8px; padding: 0.75rem 1rem;
-  font-size: 0.87rem; color: var(--gray-700); border: 1px solid var(--gray-100);
+  border: 1px solid var(--gray-100);
 }
-.method-item span { font-size: 1.25rem; }
+.source-item span { font-size: 1.2rem; }
+.source-name { font-weight: 600; color: var(--navy); font-size: 0.87rem; }
+.source-type { font-size: 0.75rem; color: var(--gray-500); }
+
+/* CONCLUSION */
+.conclusion-card {
+  background: linear-gradient(135deg, #e3f0fb, #f0f7ff);
+  border-radius: var(--radius); padding: 2rem;
+  border: 1px solid #c8dff5;
+}
+.conclusion-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 0.75rem; }
+.conclusion-card p { color: var(--gray-700); font-size: 0.92rem; line-height: 1.8; }
+
+@media (max-width: 680px) {
+  .def-card { grid-template-columns: 1fr; }
+  .def-divider { display: none; }
+  .veille-intro { flex-direction: column; }
+  .compare-table { font-size: 0.78rem; }
+  .compare-table th, .compare-table td { padding: 0.6rem 0.75rem; }
+}
 </style>
 </head>
 <body>
@@ -64,118 +140,178 @@
 </nav>
 
 <div class="page-header">
-  <div class="page-header-badge">Tendances & Innovations</div>
-  <h1>Veille Technologique</h1>
-  <p>Suivi des évolutions dans le domaine SISR · Mise à jour régulière</p>
+  <div class="page-header-badge">Veille Technologique · BTS SIO SISR</div>
+  <h1>Le Wi-Fi 6 & 6E</h1>
+  <p>La nouvelle génération du sans-fil en entreprise</p>
 </div>
 
 <div class="content">
 
+  <!-- INTRO -->
   <div class="veille-intro fade">
-    <div class="veille-intro-icon">📡</div>
-    <div>
-      <p>La veille technologique est une démarche essentielle dans le métier de technicien SISR. Elle me permet de rester informé des <strong>évolutions des infrastructures réseaux, des nouvelles menaces de sécurité</strong> et des innovations en matière de systèmes et de virtualisation. Je consulte régulièrement des sources spécialisées pour maintenir mes connaissances à jour et anticiper les changements du secteur.</p>
+    <div class="veille-intro-icon">📶</div>
+    <div class="veille-intro-text">
+      <h2>Pourquoi ce sujet ?</h2>
+      <p>Dans le cadre de ma formation <strong>BTS SIO option SISR</strong>, j'ai choisi de réaliser ma veille technologique sur le <strong>Wi-Fi 6 (802.11ax) et le Wi-Fi 6E</strong>. Ces nouvelles normes sans-fil représentent une évolution majeure pour les infrastructures réseau d'entreprise, domaine au cœur du métier de technicien SISR. Déployées progressivement depuis 2020, elles transforment la manière dont les organisations gèrent leurs connexions sans-fil.</p>
+      <div class="intro-tags">
+        <span class="intro-tag">📅 Norme 802.11ax</span>
+        <span class="intro-tag">🏢 Entreprises</span>
+        <span class="intro-tag">⚡ Hautes performances</span>
+        <span class="intro-tag">🔒 Sécurité WPA3</span>
+      </div>
     </div>
   </div>
 
-  <div class="section-label">Thèmes suivis</div>
-  <h2 class="section-title">Sujets de veille</h2>
-  <p class="section-sub">Six domaines clés surveillés en continu pour rester à la pointe des technologies SISR.</p>
+  <!-- DÉFINITION -->
+  <div class="section-label">Définition</div>
+  <h2 class="section-title">Qu'est-ce que le Wi-Fi 6 et le Wi-Fi 6E ?</h2>
+  <p class="section-sub">Comprendre les deux variantes de cette nouvelle génération sans-fil.</p>
 
-  <div class="veille-grid">
-
-    <div class="veille-card fade" style="animation-delay:0.05s">
-      <div class="veille-card-head">
-        <div class="veille-icon" style="background:#fce8e8">🔒</div>
-        <div><h3>Cybersécurité & Menaces</h3><div class="veille-meta">Surveillance continue · Priorité haute</div></div>
-      </div>
-      <p>Face à l'augmentation des cyberattaques (ransomwares, phishing, DDoS), la sécurité des infrastructures est primordiale. Les entreprises renforcent leurs politiques <strong>Zero Trust</strong> et déploient des solutions SIEM pour détecter les intrusions. La montée de l'IA dans les attaques impose une adaptation constante des défenses.</p>
-      <div class="veille-sources">
-        <span class="source-tag">ANSSI</span>
-        <span class="source-tag">CVE Details</span>
-        <span class="source-tag">Sekoia</span>
-        <span class="source-tag">Bleeping Computer</span>
-      </div>
+  <div class="def-card fade">
+    <div class="def-block">
+      <h4>📶 Wi-Fi 6 — 802.11ax</h4>
+      <p>Le <strong>Wi-Fi 6</strong>, standardisé en 2019 par l'IEEE sous la norme <strong>802.11ax</strong>, est la sixième génération du Wi-Fi. Il fonctionne sur les bandes <strong>2,4 GHz et 5 GHz</strong>, déjà utilisées par les générations précédentes. Son principal atout est d'améliorer drastiquement les performances dans des environnements très denses (open spaces, hôpitaux, entrepôts) grâce à des technologies comme l'OFDMA et le MU-MIMO amélioré. Le débit théorique monte jusqu'à <strong>9,6 Gbps</strong>.</p>
     </div>
-
-    <div class="veille-card fade" style="animation-delay:0.1s">
-      <div class="veille-card-head">
-        <div class="veille-icon" style="background:#e3f0fb">☁️</div>
-        <div><h3>Cloud & Virtualisation</h3><div class="veille-meta">Évolution rapide · Impact fort</div></div>
-      </div>
-      <p>Le <strong>cloud hybride</strong> s'impose comme l'architecture de référence. Des solutions comme Azure, AWS et les hyperviseurs (VMware, Proxmox) transforment la gestion des infrastructures. La conteneurisation via Docker et Kubernetes simplifie le déploiement des services en entreprise.</p>
-      <div class="veille-sources">
-        <span class="source-tag">Microsoft Azure Blog</span>
-        <span class="source-tag">Proxmox Forums</span>
-        <span class="source-tag">Le Monde Informatique</span>
-      </div>
+    <div class="def-divider"></div>
+    <div class="def-block">
+      <h4>📡 Wi-Fi 6E — Extension 6 GHz</h4>
+      <p>Le <strong>Wi-Fi 6E</strong> est une extension du Wi-Fi 6 qui ajoute la <strong>bande 6 GHz</strong>, ouverte au Wi-Fi en France en 2021. Cette bande offre <strong>1 200 MHz de spectre supplémentaire</strong>, soit 14 nouveaux canaux quasi vierges d'interférences. Cela permet des débits encore plus élevés et une latence ultra-faible (moins de 2 ms), idéales pour les applications temps réel. En contrepartie, la portée est légèrement réduite par rapport aux bandes inférieures.</p>
     </div>
-
-    <div class="veille-card fade" style="animation-delay:0.15s">
-      <div class="veille-card-head">
-        <div class="veille-icon" style="background:#e8f5e9">🌐</div>
-        <div><h3>Réseaux & SDN</h3><div class="veille-meta">Révolution en cours · SISR critique</div></div>
-      </div>
-      <p>Le <strong>Software Defined Networking (SDN)</strong> révolutionne la gestion des réseaux. Le Wi-Fi 6E et la 5G dans les architectures d'entreprise ouvrent de nouvelles possibilités. L'IPv6 devient incontournable avec l'épuisement des adresses IPv4 dans les grandes organisations.</p>
-      <div class="veille-sources">
-        <span class="source-tag">Cisco Newsroom</span>
-        <span class="source-tag">NetworkWorld</span>
-        <span class="source-tag">ZDNet</span>
-      </div>
-    </div>
-
-    <div class="veille-card fade" style="animation-delay:0.2s">
-      <div class="veille-card-head">
-        <div class="veille-icon" style="background:#f3e8f9">🤖</div>
-        <div><h3>IA & Automatisation IT</h3><div class="veille-meta">Tendance majeure · 2025</div></div>
-      </div>
-      <p>L'IA s'intègre dans les outils de supervision réseau (<strong>AIOps</strong>) pour prédire les pannes avant qu'elles surviennent. L'automatisation via Ansible et Terraform change les pratiques des admins système. Les chatbots IA transforment également le support helpdesk de niveau 1.</p>
-      <div class="veille-sources">
-        <span class="source-tag">Gartner</span>
-        <span class="source-tag">01net</span>
-        <span class="source-tag">LeMagIT</span>
-      </div>
-    </div>
-
-    <div class="veille-card fade" style="animation-delay:0.25s">
-      <div class="veille-card-head">
-        <div class="veille-icon" style="background:#e3f0fb">🖥️</div>
-        <div><h3>Windows Server & Linux</h3><div class="veille-meta">Systèmes · Compétence cœur SISR</div></div>
-      </div>
-      <p><strong>Windows Server 2025</strong> apporte des améliorations en sécurité et performance pour Active Directory. Côté Linux, Debian et Ubuntu Server dominent les infrastructures cloud. La gestion des GPO et des politiques de sécurité évolue avec les nouvelles normes de conformité.</p>
-      <div class="veille-sources">
-        <span class="source-tag">Microsoft Docs</span>
-        <span class="source-tag">Linux Foundation</span>
-        <span class="source-tag">IT-Connect</span>
-      </div>
-    </div>
-
-    <div class="veille-card fade" style="animation-delay:0.3s">
-      <div class="veille-card-head">
-        <div class="veille-icon" style="background:#fef3e2">📋</div>
-        <div><h3>RGPD & Conformité</h3><div class="veille-meta">Obligation légale · Collectivités</div></div>
-      </div>
-      <p>Pour les collectivités territoriales comme les mairies, la conformité <strong>RGPD</strong> est une obligation majeure. Les techniciens SISR doivent intégrer la protection des données dès la conception (Privacy by Design). L'ANSSI publie des recommandations spécifiques aux administrations publiques.</p>
-      <div class="veille-sources">
-        <span class="source-tag">CNIL</span>
-        <span class="source-tag">ANSSI</span>
-        <span class="source-tag">Journal du Net</span>
-      </div>
-    </div>
-
   </div>
 
-  <div class="section-label">Méthodes</div>
-  <h2 class="section-title">Comment je fais ma veille</h2>
-  <div class="methods-card fade">
-    <div class="method-grid">
-      <div class="method-item"><span>📰</span> Newsletters IT-Connect, LeMagIT</div>
-      <div class="method-item"><span>🎥</span> YouTube : Cocadmin, Xavki</div>
-      <div class="method-item"><span>🏫</span> Cisco Netacad & ressources CEFIM</div>
-      <div class="method-item"><span>📱</span> Agrégateurs RSS & r/sysadmin</div>
-      <div class="method-item"><span>📄</span> Publications officielles ANSSI & CNIL</div>
-      <div class="method-item"><span>💬</span> Communautés Discord IT francophones</div>
+  <!-- COMPARAISON -->
+  <div class="section-label">Comparaison</div>
+  <h2 class="section-title">Wi-Fi 5 vs Wi-Fi 6 vs Wi-Fi 6E</h2>
+  <p class="section-sub">Un tableau récapitulatif des évolutions entre les générations.</p>
+
+  <table class="compare-table fade">
+    <thead>
+      <tr>
+        <th>Caractéristique</th>
+        <th><span class="badge-wifi5">Wi-Fi 5</span> — 802.11ac</th>
+        <th><span class="badge-wifi6">Wi-Fi 6</span> — 802.11ax</th>
+        <th><span class="badge-wifi6e">Wi-Fi 6E</span> — 802.11ax + 6 GHz</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Débit max théorique</td><td>3,5 Gbps</td><td>9,6 Gbps</td><td>9,6 Gbps</td></tr>
+      <tr><td>Bandes de fréquence</td><td>5 GHz</td><td>2,4 & 5 GHz</td><td>2,4 / 5 / 6 GHz</td></tr>
+      <tr><td>OFDMA</td><td>Non</td><td>Oui</td><td>Oui</td></tr>
+      <tr><td>MU-MIMO</td><td>4×4 (DL)</td><td>8×8 (DL + UL)</td><td>8×8 (DL + UL)</td></tr>
+      <tr><td>Target Wake Time (TWT)</td><td>Non</td><td>Oui</td><td>Oui</td></tr>
+      <tr><td>Sécurité</td><td>WPA2</td><td>WPA3</td><td>WPA3 obligatoire</td></tr>
+      <tr><td>Latence</td><td>~10 ms</td><td>~5 ms</td><td>&lt; 2 ms</td></tr>
+      <tr><td>Interférences</td><td>Élevées</td><td>Réduites</td><td>Très faibles</td></tr>
+    </tbody>
+  </table>
+
+  <!-- TECHNOLOGIES CLÉS -->
+  <div class="section-label">Technologies clés</div>
+  <h2 class="section-title">Les innovations techniques du Wi-Fi 6</h2>
+  <p class="section-sub">Les nouvelles technologies qui font la différence pour les infrastructures d'entreprise.</p>
+
+  <div class="avantages-grid">
+    <div class="avantage-card fade" style="animation-delay:0.05s">
+      <div class="av-icon" style="background:#e3f0fb">⚡</div>
+      <h4>OFDMA</h4>
+      <p>L'<strong>Orthogonal Frequency Division Multiple Access</strong> divise chaque canal en sous-canaux. Plusieurs appareils peuvent être servis simultanément, réduisant la latence dans les environnements denses comme les open spaces ou les salles de classe.</p>
     </div>
+    <div class="avantage-card fade" style="animation-delay:0.1s">
+      <div class="av-icon" style="background:#e8f5e9">📡</div>
+      <h4>MU-MIMO 8×8</h4>
+      <p>Le <strong>Multi-User MIMO</strong> passe de 4 à 8 flux simultanés, en émission et réception. Le point d'accès peut communiquer avec 8 appareils en même temps, multipliant le débit global du réseau sans-fil.</p>
+    </div>
+    <div class="avantage-card fade" style="animation-delay:0.15s">
+      <div class="av-icon" style="background:#fef3e2">🔋</div>
+      <h4>Target Wake Time (TWT)</h4>
+      <p>Le <strong>TWT</strong> permet au point d'accès de planifier les périodes d'activité des appareils connectés. Les équipements IoT n'ont plus besoin d'écouter le réseau en permanence, ce qui réduit fortement leur consommation d'énergie.</p>
+    </div>
+    <div class="avantage-card fade" style="animation-delay:0.2s">
+      <div class="av-icon" style="background:#f3e8f9">🔒</div>
+      <h4>WPA3 obligatoire</h4>
+      <p>Le Wi-Fi 6 impose le protocole <strong>WPA3</strong>, bien plus robuste que WPA2. Il introduit le chiffrement individualisé des sessions et rend les attaques par dictionnaire quasi impossibles, renforçant la sécurité des réseaux d'entreprise.</p>
+    </div>
+    <div class="avantage-card fade" style="animation-delay:0.25s">
+      <div class="av-icon" style="background:#fce8e8">🎨</div>
+      <h4>BSS Coloring</h4>
+      <p>Le <strong>BSS Coloring</strong> attribue une "couleur" à chaque cellule Wi-Fi. Les appareils ignorent ainsi les trames des réseaux voisins, réduisant considérablement les interférences entre points d'accès dans un même bâtiment.</p>
+    </div>
+    <div class="avantage-card fade" style="animation-delay:0.3s">
+      <div class="av-icon" style="background:#e8f5e9">📊</div>
+      <h4>Modulation 1024-QAM</h4>
+      <p>Contre 256-QAM en Wi-Fi 5, le Wi-Fi 6 encode plus de données par signal grâce à la <strong>1024-QAM</strong>. Cela se traduit par un gain de débit d'environ <strong>25 %</strong> dans des conditions de signal favorables.</p>
+    </div>
+  </div>
+
+  <!-- USAGES ENTREPRISE -->
+  <div class="section-label">Cas d'usage</div>
+  <h2 class="section-title">Applications en entreprise & collectivités</h2>
+  <p class="section-sub">Comment le Wi-Fi 6/6E répond aux besoins concrets des organisations.</p>
+
+  <div class="usage-grid">
+    <div class="usage-card fade" style="animation-delay:0.05s">
+      <h4>🏢 Open spaces & salles de réunion</h4>
+      <p>Dans les bureaux modernes où des dizaines d'appareils se connectent simultanément, le Wi-Fi 6 maintient des débits stables grâce à l'OFDMA. Plus de ralentissements lors des réunions en visioconférence.</p>
+      <span class="usage-tag">Densité élevée</span>
+    </div>
+    <div class="usage-card fade" style="animation-delay:0.1s">
+      <h4>🏛️ Mairies & administrations publiques</h4>
+      <p>Les collectivités comme la Mairie de Vitry-sur-Seine modernisent leurs infrastructures. Le Wi-Fi 6 couvre les grands bâtiments avec moins de points d'accès, tout en assurant la sécurité WPA3 sur les données sensibles des administrés.</p>
+      <span class="usage-tag">Sécurité & conformité</span>
+    </div>
+    <div class="usage-card fade" style="animation-delay:0.15s">
+      <h4>🏭 Entrepôts & industrie 4.0</h4>
+      <p>Les environnements industriels connectent de nombreux appareils IoT (capteurs, scanners). Le TWT réduit la consommation des équipements sur batterie, et la robustesse garantit des connexions stables malgré les interférences électromagnétiques.</p>
+      <span class="usage-tag">IoT & mobilité</span>
+    </div>
+    <div class="usage-card fade" style="animation-delay:0.2s">
+      <h4>🏥 Hôpitaux & établissements de santé</h4>
+      <p>La faible latence du Wi-Fi 6E (&lt;2 ms) est cruciale pour les applications médicales temps réel. La séparation des bandes permet d'isoler les équipements critiques sur le 6 GHz, garantissant la continuité des soins.</p>
+      <span class="usage-tag">Temps réel</span>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="section-label">Bibliographie</div>
+  <h2 class="section-title">Sources consultées</h2>
+  <p class="section-sub">Sources fiables utilisées pour construire cette veille technologique.</p>
+
+  <div class="sources-section fade">
+    <div class="sources-grid">
+      <div class="source-item">
+        <span>🌐</span>
+        <div><div class="source-name">Wi-Fi Alliance</div><div class="source-type">wifi6.com · Documentation officielle</div></div>
+      </div>
+      <div class="source-item">
+        <span>📰</span>
+        <div><div class="source-name">IT-Connect.fr</div><div class="source-type">Articles techniques en français</div></div>
+      </div>
+      <div class="source-item">
+        <span>🔧</span>
+        <div><div class="source-name">Cisco Newsroom</div><div class="source-type">Déploiements & études de cas</div></div>
+      </div>
+      <div class="source-item">
+        <span>📡</span>
+        <div><div class="source-name">NetworkWorld</div><div class="source-type">Comparatifs & analyses réseau</div></div>
+      </div>
+      <div class="source-item">
+        <span>🇫🇷</span>
+        <div><div class="source-name">ARCEP</div><div class="source-type">Réglementation bande 6 GHz en France</div></div>
+      </div>
+      <div class="source-item">
+        <span>📄</span>
+        <div><div class="source-name">IEEE 802.11ax</div><div class="source-type">Spécification officielle de la norme</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="section-label">Bilan</div>
+  <h2 class="section-title">Conclusion</h2>
+  <div class="conclusion-card fade">
+    <h3>💡 Ce que cette veille m'a apporté</h3>
+    <p>Le Wi-Fi 6 et 6E représentent une <strong>révolution pour les infrastructures sans-fil d'entreprise</strong>. Au-delà des simples gains de débit, c'est toute la gestion des réseaux denses qui est repensée avec l'OFDMA, le MU-MIMO amélioré et le BSS Coloring. La sécurité est renforcée avec l'obligation du WPA3, point critique dans des environnements comme les mairies ou les hôpitaux.</p>
+    <p style="margin-top:1rem">En tant que futur technicien SISR, comprendre ces évolutions est essentiel : la migration vers le Wi-Fi 6 est déjà en cours dans de nombreuses organisations, et les techniciens réseau doivent maîtriser le déploiement, la configuration et la supervision de ces nouvelles infrastructures. Cette veille me permettra d'être opérationnel face à ces technologies lors de ma future insertion professionnelle.</p>
   </div>
 
 </div>
