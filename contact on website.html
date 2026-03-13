@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – Mohamed GUETARI</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+
+.contact-wrapper { max-width: 660px; margin: 0 auto; }
+
+.contact-card {
+  background: white; border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-100); box-shadow: var(--shadow-md);
+  overflow: hidden; margin-bottom: 2rem;
+}
+
+.contact-card-top {
+  background: linear-gradient(135deg, var(--navy), #1a4a7a);
+  padding: 2.5rem; text-align: center; position: relative; overflow: hidden;
+}
+.contact-card-top::before {
+  content: '✉️'; position: absolute; right: 1.5rem; bottom: -1rem;
+  font-size: 7rem; opacity: 0.07; pointer-events: none;
+}
+.contact-avatar {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; margin: 0 auto 1rem;
+}
+.contact-card-top h2 { font-family: 'DM Serif Display', serif; color: white; font-size: 1.4rem; }
+.contact-card-top p { color: rgba(255,255,255,0.6); font-size: 0.88rem; margin-top: 0.3rem; }
+
+.contact-card-body { padding: 2rem; }
+
+/* NOTICE */
+.privacy-notice {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  background: #e8f5e9; border: 1px solid #c8e6c9;
+  border-radius: 8px; padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem; font-size: 0.84rem; color: #2e7d32;
+}
+.privacy-notice span { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+.privacy-notice strong { display: block; margin-bottom: 0.15rem; }
+
+/* SUJETS */
+.form-label {
+  display: block; font-size: 0.82rem; font-weight: 600;
+  color: var(--gray-700); margin-bottom: 0.45rem; letter-spacing: 0.02em;
+}
+.subject-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1.25rem;
+}
+.subject-btn {
+  padding: 0.6rem 0.75rem; border-radius: 8px;
+  border: 1.5px solid var(--gray-300); background: white;
+  font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+  font-weight: 500; color: var(--gray-700); cursor: pointer;
+  transition: all 0.2s; text-align: left; display: flex; align-items: center; gap: 0.5rem;
+}
+.subject-btn:hover { border-color: var(--accent); color: var(--accent); background: #f0f7ff; }
+.subject-btn.selected { border-color: var(--accent); background: #e3f0fb; color: var(--accent); font-weight: 600; }
+
+/* FORM */
+.form-group { margin-bottom: 1.25rem; }
+.form-input, .form-textarea {
+  width: 100%; padding: 0.75rem 1rem;
+  border: 1.5px solid var(--gray-300); border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.92rem; color: var(--text);
+  background: var(--off-white); transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(45,125,210,0.12);
+  background: white;
+}
+.form-input.error { border-color: #e53935; }
+.form-textarea { resize: vertical; min-height: 140px; line-height: 1.6; }
+.field-footer { display: flex; justify-content: space-between; margin-top: 0.35rem; }
+.form-hint { font-size: 0.76rem; color: var(--gray-500); }
+.char-count { font-size: 0.75rem; color: var(--gray-500); }
+.char-count.warn { color: #d4830a; }
+
+/* BOUTON */
+.btn-send {
+  width: 100%; padding: 0.95rem;
+  background: var(--accent); color: white; border: none;
+  border-radius: 10px; font-family: 'DM Sans', sans-serif;
+  font-size: 1rem; font-weight: 600; cursor: pointer;
+  transition: all 0.25s; display: flex; align-items: center;
+  justify-content: center; gap: 0.6rem; margin-top: 0.5rem;
+}
+.btn-send:hover:not(:disabled) { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(45,125,210,0.35); }
+.btn-send:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+/* SPINNER */
+.spinner {
+  width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.4);
+  border-top-color: white; border-radius: 50%;
+  animation: spin 0.7s linear infinite; display: none;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* STATES */
+#formView, #successView, #errorView { transition: opacity 0.3s; }
+#successView, #errorView { display: none; text-align: center; padding: 3rem 2rem; }
+
+.state-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+.state-title { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 0.5rem; }
+.state-sub { color: var(--gray-500); font-size: 0.92rem; line-height: 1.65; }
+
+.btn-reset {
+  display: inline-block; margin-top: 1.5rem;
+  padding: 0.65rem 1.75rem; background: var(--accent); color: white;
+  border-radius: 8px; font-weight: 600; font-size: 0.88rem;
+  border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s;
+}
+.btn-reset:hover { background: var(--accent-light); }
+
+@media (max-width: 500px) {
+  .subject-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Mohamed <span>G.</span></a>
+  <ul class="nav-links">
+    <li><a href="profil.html">Profil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="parcours.html">Parcours</a></li>
+    <li><a href="veille.html">Veille</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-badge">Prise de contact</div>
+  <h1>Me contacter</h1>
+  <p>Envoyez-moi un message sans quitter cette page</p>
+</div>
+
+<div class="content">
+  <div class="contact-wrapper">
+    <div class="contact-card fade">
+
+      <div class="contact-card-top">
+        <div class="contact-avatar">👤</div>
+        <h2>Mohamed GUETARI</h2>
+        <p>BTS SIO · Option SISR · Lycée Polyvalent de Cachan</p>
+      </div>
+
+      <div class="contact-card-body">
+
+        <!-- FORMULAIRE -->
+        <div id="formView">
+          <div class="privacy-notice">
+            <span>🔒</span>
+            <div>
+              <strong>Aucune donnée personnelle collectée</strong>
+              Vous pouvez envoyer un message anonymement. Aucune information n'est stockée sur ce site.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-label">Objet du message</div>
+            <div class="subject-grid">
+              <button type="button" class="subject-btn" onclick="selectSubject(this, 'Proposition de stage')">💼 Proposition de stage</button>
+              <button type="button" class="subject-btn" onclick="selectSubject(this, 'Opportunité professionnelle')">🚀 Opportunité pro</button>
+              <button type="button" class="subject-btn" onclick="selectSubject(this, 'Question sur le portfolio')">📂 Question portfolio</button>
+              <button type="button" class="subject-btn" onclick="selectSubject(this, 'Autre')">💬 Autre</button>
+            </div>
+            <input type="text" class="form-input" id="subjectInput" placeholder="Ou écrivez votre propre objet..." oninput="onSubjectType()">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="messageInput">Votre message</label>
+            <textarea class="form-textarea" id="messageInput" placeholder="Bonjour Mohamed, je vous contacte au sujet de…" maxlength="1000" oninput="updateCharCount()"></textarea>
+            <div class="field-footer">
+              <span class="form-hint">Décrivez précisément votre demande.</span>
+              <span class="char-count" id="charCount">0 / 1000</span>
+            </div>
+          </div>
+
+          <button class="btn-send" id="sendBtn" onclick="sendMessage()">
+            <div class="spinner" id="spinner"></div>
+            <span id="btnLabel">✉️ Envoyer le message</span>
+          </button>
+        </div>
+
+        <!-- SUCCÈS -->
+        <div id="successView">
+          <div class="state-icon">🎉</div>
+          <div class="state-title">Message envoyé !</div>
+          <p class="state-sub">Votre message a bien été transmis à Mohamed.<br>Il vous répondra dans les plus brefs délais.</p>
+          <button class="btn-reset" onclick="resetForm()">← Envoyer un autre message</button>
+        </div>
+
+        <!-- ERREUR -->
+        <div id="errorView">
+          <div class="state-icon">😕</div>
+          <div class="state-title">Une erreur est survenue</div>
+          <p class="state-sub">Le message n'a pas pu être envoyé.<br>Veuillez réessayer dans quelques instants.</p>
+          <button class="btn-reset" onclick="showForm()">← Réessayer</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p><strong>Mohamed GUETARI</strong> — BTS SIO · Option SISR</p>
+  <p style="margin-top:0.4rem">📧 mohamedguetari65@gmail.com · 📱 06 95 92 72 85</p>
+</footer>
+
+<script>
+  const WEB3FORMS_KEY = '5abd62c2-dbc1-4d1c-a6fa-7082db022bd6';
+  let selectedSubject = '';
+
+  function selectSubject(btn, value) {
+    document.querySelectorAll('.subject-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedSubject = value;
+    document.getElementById('subjectInput').value = value;
+    document.getElementById('subjectInput').classList.remove('error');
+  }
+
+  function onSubjectType() {
+    selectedSubject = document.getElementById('subjectInput').value;
+    document.querySelectorAll('.subject-btn').forEach(b => b.classList.remove('selected'));
+    document.getElementById('subjectInput').classList.remove('error');
+  }
+
+  function updateCharCount() {
+    const len = document.getElementById('messageInput').value.length;
+    const el = document.getElementById('charCount');
+    el.textContent = len + ' / 1000';
+    el.classList.toggle('warn', len > 850);
+    document.getElementById('messageInput').classList.remove('error');
+  }
+
+  function setLoading(state) {
+    const btn = document.getElementById('sendBtn');
+    const spinner = document.getElementById('spinner');
+    const label = document.getElementById('btnLabel');
+    btn.disabled = state;
+    spinner.style.display = state ? 'block' : 'none';
+    label.textContent = state ? 'Envoi en cours…' : '✉️ Envoyer le message';
+  }
+
+  async function sendMessage() {
+    const subject = document.getElementById('subjectInput').value.trim() || selectedSubject;
+    const message = document.getElementById('messageInput').value.trim();
+
+    let valid = true;
+    if (!subject) {
+      document.getElementById('subjectInput').classList.add('error');
+      document.getElementById('subjectInput').focus();
+      valid = false;
+    }
+    if (!message) {
+      document.getElementById('messageInput').classList.add('error');
+      if (valid) document.getElementById('messageInput').focus();
+      valid = false;
+    }
+    if (!valid) return;
+
+    setLoading(true);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: '[Portfolio] ' + subject,
+          message: message,
+          from_name: 'Visiteur du portfolio'
+        })
+      });
+
+      const data = await response.json();
+      setLoading(false);
+
+      if (data.success) {
+        document.getElementById('formView').style.display = 'none';
+        document.getElementById('successView').style.display = 'block';
+      } else {
+        showError();
+      }
+    } catch (e) {
+      setLoading(false);
+      showError();
+    }
+  }
+
+  function showError() {
+    document.getElementById('formView').style.display = 'none';
+    document.getElementById('errorView').style.display = 'block';
+  }
+
+  function showForm() {
+    document.getElementById('errorView').style.display = 'none';
+    document.getElementById('formView').style.display = 'block';
+  }
+
+  function resetForm() {
+    document.getElementById('subjectInput').value = '';
+    document.getElementById('messageInput').value = '';
+    document.querySelectorAll('.subject-btn').forEach(b => b.classList.remove('selected'));
+    document.getElementById('charCount').textContent = '0 / 1000';
+    selectedSubject = '';
+    document.getElementById('successView').style.display = 'none';
+    document.getElementById('formView').style.display = 'block';
+  }
+</script>
+</body>
+</html>
